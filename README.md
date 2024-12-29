@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+Weather Dashboard
+A responsive and interactive dashboard that allows users to view historical weather data for a specific location and date range using the Open-Meteo Historical Weather API. The dashboard provides weather details including maximum, minimum, and mean temperatures over the selected date range and location, displayed both in graphical and tabular formats.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+Location Input: Users can enter latitude and longitude coordinates to get weather data.
+Date Range Selection: Users can pick a start date and end date using a date picker.
+Graphical Visualization: The data is visualized using a line graph (Chart.js).
+Data Table: The fetched weather data is displayed in a paginated table with configurable rows per page.
+Responsive Design: The app is fully responsive and optimized for mobile, tablet, and desktop views.
+Loading & Error Handling: Displays loading states while fetching data and handles errors like invalid inputs or failed API requests.
 
-## Available Scripts
+Tech Stack
+React: JavaScript library for building user interfaces.
+Tailwind CSS: A utility-first CSS framework for styling the application.
+Chart.js: A library for creating beautiful charts.
+Axios: A promise-based HTTP client for making API requests.
+React DatePicker: For selecting start and end dates.
+Open-Meteo API: Free weather data API to fetch historical weather data.
 
-In the project directory, you can run:
 
-### `npm start`
+Installation
+Prerequisites
+Make sure you have the following installed on your machine:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Node.js (v16 or higher)
+npm (Node Package Manager)
+Steps to run the project locally:
+Clone the repository:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bash
+Copy code
+git clone https://github.com/yourusername/weather-dashboard.git
+cd weather-dashboard
+Install the dependencies:
 
-### `npm test`
+bash
+Copy code
+npm install
+Start the development server:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+bash
+Copy code
+npm start
+This will start the React development server and open the application in your default browser at http://localhost:3000.
 
-### `npm run build`
+How to Use
+Enter Latitude and Longitude: Input valid coordinates (latitude and longitude) of the location you want to check the weather for.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Select Date Range: Use the date picker to choose the start and end dates for the weather data.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Fetch Data: Click the "Get Weather Data" button to fetch the weather data for the selected location and date range.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+View Data:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Chart: View a line graph that shows maximum, minimum, and mean temperatures for the selected date range.
+Table: View the same data in a paginated table below the chart.

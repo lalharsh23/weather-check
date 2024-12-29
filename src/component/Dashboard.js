@@ -104,9 +104,10 @@ const Dashboard = () => {
       </div>
 
       <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        {/* Grid Layout - Adjust for mobile */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
           {/* Latitude Input */}
-          <div>
+          <div className="sm:col-span-1">
             <label className="block text-lg font-medium text-gray-700 mb-2">Latitude</label>
             <input
               type="number"
@@ -120,7 +121,7 @@ const Dashboard = () => {
           </div>
 
           {/* Longitude Input */}
-          <div>
+          <div className="sm:col-span-1">
             <label className="block text-lg font-medium text-gray-700 mb-2">Longitude</label>
             <input
               type="number"
@@ -134,7 +135,7 @@ const Dashboard = () => {
           </div>
 
           {/* Start Date */}
-          <div>
+          <div className="sm:col-span-1">
             <label className="block text-lg font-medium text-gray-700 mb-2">Start Date</label>
             <DatePicker
               selected={startDate}
@@ -144,7 +145,7 @@ const Dashboard = () => {
           </div>
 
           {/* End Date */}
-          <div>
+          <div className="sm:col-span-1">
             <label className="block text-lg font-medium text-gray-700 mb-2">End Date</label>
             <DatePicker
               selected={endDate}
