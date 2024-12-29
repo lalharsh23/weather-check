@@ -37,10 +37,8 @@ const Dashboard = () => {
         },
       });
 
-      // The response.data.daily contains the data arrays we need
       const { time, temperature_2m_max, temperature_2m_min, temperature_2m_mean, apparent_temperature_max, apparent_temperature_min, apparent_temperature_mean } = response.data.daily;
 
-      // Organizing data into an array of objects
       const formattedData = time.map((date, index) => ({
         date,
         temperature_2m_max: temperature_2m_max[index],
@@ -99,122 +97,140 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-4xl font-bold mb-6 text-center">Weather Dashboard</h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div>
-          <label className="block text-lg font-medium mb-2">Latitude</label>
-          <input
-            type="number"
-            value={latitude}
-            onChange={(e) => setLatitude(e.target.value)}
-            className="w-full p-2 border rounded-lg"
-            placeholder="Enter latitude"
-            min={-90}
-            max={90}
-          />
-        </div>
-        <div>
-          <label className="block text-lg font-medium mb-2">Longitude</label>
-          <input
-            type="number"
-            value={longitude}
-            onChange={(e) => setLongitude(e.target.value)}
-            className="w-full p-2 border rounded-lg"
-            placeholder="Enter longitude"
-            min={-180}
-            max={180}
-          />
-        </div>
-        <div className="col-span-2">
-          <label className="block text-lg font-medium mb-2">Start Date</label>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            className="w-full p-2 border rounded-lg"
-          />
-        </div>
-        <div className="col-span-2">
-          <label className="block text-lg font-medium mb-2">End Date</label>
-          <DatePicker
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-            className="w-full p-2 border rounded-lg"
-          />
-        </div>
-        <div className="col-span-2 mt-4 text-center">
-          <button
-            onClick={fetchWeatherData}
-            className="bg-blue-500 text-white py-2 px-4 rounded-lg"
-          >
-            Get Weather Data
-          </button>
-        </div>
+    <div className="container mx-auto px-4 py-6 bg-gray-50 min-h-screen">
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-bold text-gray-900 tracking-tight">Weather Dashboard</h1>
+        <p className="text-xl text-gray-600 mt-2">Get the weather data for any location and date range.</p>
       </div>
 
-      {loading && <p className="text-center">Loading...</p>}
-      {error && <p className="text-center text-red-500">{error}</p>}
+      <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          {/* Latitude Input */}
+          <div>
+            <label className="block text-lg font-medium text-gray-700 mb-2">Latitude</label>
+            <input
+              type="number"
+              value={latitude}
+              onChange={(e) => setLatitude(e.target.value)}
+              className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter latitude"
+              min={-90}
+              max={90}
+            />
+          </div>
 
-      {weatherData && !loading && (
-        <div className="mb-6">
-          <Line data={chartData} />
-        </div>
-      )}
+          {/* Longitude Input */}
+          <div>
+            <label className="block text-lg font-medium text-gray-700 mb-2">Longitude</label>
+            <input
+              type="number"
+              value={longitude}
+              onChange={(e) => setLongitude(e.target.value)}
+              className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter longitude"
+              min={-180}
+              max={180}
+            />
+          </div>
 
-      {weatherData && !loading && (
-        <div>
-          <table className="min-w-full border-collapse table-auto">
-            <thead>
-              <tr>
-                <th className="border p-2">Date</th>
-                <th className="border p-2">Max Temp (°C)</th>
-                <th className="border p-2">Min Temp (°C)</th>
-                <th className="border p-2">Mean Temp (°C)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedData.map((day, index) => (
-                <tr key={index}>
-                  <td className="border p-2">{day.date}</td>
-                  <td className="border p-2">{day.temperature_2m_max}</td>
-                  <td className="border p-2">{day.temperature_2m_min}</td>
-                  <td className="border p-2">{day.temperature_2m_mean}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {/* Start Date */}
+          <div>
+            <label className="block text-lg font-medium text-gray-700 mb-2">Start Date</label>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
-          <div className="mt-4">
-            <select
-              onChange={handleRowsPerPageChange}
-              value={rowsPerPage}
-              className="p-2 border rounded-lg"
+          {/* End Date */}
+          <div>
+            <label className="block text-lg font-medium text-gray-700 mb-2">End Date</label>
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Submit Button */}
+          <div className="col-span-2 text-center mt-4">
+            <button
+              onClick={fetchWeatherData}
+              className="bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <option value={10}>10</option>
-              <option value={20}>20</option>
-              <option value={50}>50</option>
-            </select>
-
-            <div className="inline-block ml-4">
-              <button
-                disabled={currentPage === 1}
-                onClick={() => handlePageChange(currentPage - 1)}
-                className="bg-blue-500 text-white py-2 px-4 rounded-lg mr-2"
-              >
-                Previous
-              </button>
-              <button
-                disabled={currentPage === totalPages}
-                onClick={() => handlePageChange(currentPage + 1)}
-                className="bg-blue-500 text-white py-2 px-4 rounded-lg"
-              >
-                Next
-              </button>
-            </div>
+              Get Weather Data
+            </button>
           </div>
         </div>
-      )}
+
+        {/* Error and Loading States */}
+        {loading && <div className="text-center text-gray-600">Loading...</div>}
+        {error && <div className="text-center text-red-500">{error}</div>}
+
+        {/* Weather Data Chart */}
+        {weatherData && !loading && (
+          <div className="mt-8">
+            <Line data={chartData} />
+          </div>
+        )}
+
+        {/* Weather Data Table */}
+        {weatherData && !loading && (
+          <div className="mt-8 overflow-x-auto">
+            <table className="min-w-full table-auto bg-white shadow-lg rounded-lg border-collapse">
+              <thead className="bg-blue-500 text-white">
+                <tr>
+                  <th className="py-3 px-4 text-left">Date</th>
+                  <th className="py-3 px-4 text-left">Max Temp (°C)</th>
+                  <th className="py-3 px-4 text-left">Min Temp (°C)</th>
+                  <th className="py-3 px-4 text-left">Mean Temp (°C)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {paginatedData.map((day, index) => (
+                  <tr key={index} className="border-t hover:bg-gray-100">
+                    <td className="py-3 px-4">{day.date}</td>
+                    <td className="py-3 px-4">{day.temperature_2m_max}</td>
+                    <td className="py-3 px-4">{day.temperature_2m_min}</td>
+                    <td className="py-3 px-4">{day.temperature_2m_mean}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            {/* Pagination Controls */}
+            <div className="flex justify-between mt-4">
+              <select
+                onChange={handleRowsPerPageChange}
+                value={rowsPerPage}
+                className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={50}>50</option>
+              </select>
+
+              <div className="flex items-center">
+                <button
+                  disabled={currentPage === 1}
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  className="bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md mr-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  Previous
+                </button>
+                <button
+                  disabled={currentPage === totalPages}
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  className="bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
