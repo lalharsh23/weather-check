@@ -204,27 +204,24 @@ const Dashboard = () => {
 
             {/* Checkbox Selection */}
             <div className="sm:col-span-1 mb-4">
-  <h2 className="text-lg font-medium text-gray-700 mb-2 ml-16 whitespace-nowrap">Select Weather Data</h2>
-  <div className="space-y-3">
-    {Object.keys(selectedData).map((dataKey) => (
-      <div key={dataKey} className="flex items-center space-x-2">
-        <input
-          type="checkbox"
-          name={dataKey}
-          checked={selectedData[dataKey]}
-          onChange={handleCheckboxChange}
-          className="mr-2 ml-4"
-        />
-        <label className="text-lg text-gray-700 whitespace-nowrap">
-          {dataKey.replace(/_/g, " ").toLowerCase()}
-        </label>
-      </div>
-    ))}
-  </div>
-</div>
-
-
-
+              <h2 className="text-lg font-medium text-gray-700 mb-2 ml-16 whitespace-nowrap">Select Weather Data</h2>
+              <div className="space-y-3">
+                {Object.keys(selectedData).map((dataKey) => (
+                  <div key={dataKey} className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      name={dataKey}
+                      checked={selectedData[dataKey]}
+                      onChange={handleCheckboxChange}
+                      className="mr-2 ml-4"
+                    />
+                    <label className="text-lg text-gray-700 whitespace-nowrap">
+                      {dataKey.replace(/_/g, " ").toLowerCase()}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             {/* Submit Button */}
             <div className="col-span-2 text-center mt-4">
@@ -275,9 +272,9 @@ const Dashboard = () => {
             </div>
           )}
 
-            {/* Weather Data Table */}
-            {weatherData && !loading && (
-            <div className="mt-8">
+          {/* Weather Data Table */}
+          {weatherData && !loading && (
+            <div className="mt-8 overflow-x-auto"> {/* Allow horizontal scrolling */}
               <table className="min-w-full table-auto">
                 <thead>
                   <tr>
@@ -312,14 +309,14 @@ const Dashboard = () => {
                   <select
                     value={rowsPerPage}
                     onChange={handleRowsPerPageChange}
-                    className="ml-2 p-2 border border-gray-300 rounded-lg"
+                    className="ml-2 p-2  border border-gray-300 rounded-lg"
                   >
                     <option value={10}>10</option>
                     <option value={20}>20</option>
                     <option value={50}>50</option>
                   </select>
                 </div>
-                <div>
+                <div className="whitespace-nowrap">
                   <button
                     disabled={currentPage === 1}
                     onClick={() => handlePageChange(currentPage - 1)}
