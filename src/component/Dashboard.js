@@ -274,6 +274,70 @@ const Dashboard = () => {
               </div>
             </div>
           )}
+
+            {/* Weather Data Table */}
+            {weatherData && !loading && (
+            <div className="mt-8">
+              <table className="min-w-full table-auto">
+                <thead>
+                  <tr>
+                    <th className="px-4 py-2 border">Date</th>
+                    <th className="px-4 py-2 border">Max Temp (°C)</th>
+                    <th className="px-4 py-2 border">Min Temp (°C)</th>
+                    <th className="px-4 py-2 border">Mean Temp (°C)</th>
+                    <th className="px-4 py-2 border">Max Apparent Temp (°C)</th>
+                    <th className="px-4 py-2 border">Min Apparent Temp (°C)</th>
+                    <th className="px-4 py-2 border">Mean Apparent Temp (°C)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentData.map((data, index) => (
+                    <tr key={index}>
+                      <td className="px-4 py-2 border">{data.date}</td>
+                      <td className="px-4 py-2 border">{data.temperature_2m_max}</td>
+                      <td className="px-4 py-2 border">{data.temperature_2m_min}</td>
+                      <td className="px-4 py-2 border">{data.temperature_2m_mean}</td>
+                      <td className="px-4 py-2 border">{data.apparent_temperature_max}</td>
+                      <td className="px-4 py-2 border">{data.apparent_temperature_min}</td>
+                      <td className="px-4 py-2 border">{data.apparent_temperature_mean}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              {/* Pagination Controls */}
+              <div className="flex justify-between mt-4">
+                <div>
+                  <label className="text-lg font-medium">Rows per page:</label>
+                  <select
+                    value={rowsPerPage}
+                    onChange={handleRowsPerPageChange}
+                    className="ml-2 p-2 border border-gray-300 rounded-lg"
+                  >
+                    <option value={10}>10</option>
+                    <option value={20}>20</option>
+                    <option value={50}>50</option>
+                  </select>
+                </div>
+                <div>
+                  <button
+                    disabled={currentPage === 1}
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    className="bg-blue-500 text-white py-2 px-4 rounded-lg"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    disabled={currentPage === Math.ceil(weatherData.length / rowsPerPage)}
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    className="bg-blue-500 text-white py-2 px-4 rounded-lg ml-2"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
