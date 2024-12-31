@@ -141,7 +141,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="container mx-auto px-4 py-6 bg-gray-200 min-h-screen">
+      <div className="container mx-auto px-0 py-0 bg-gray-200 min-h-screen">
         <div>
           <img 
             src="https://i0.wp.com/traveltoyournature.com/wp-content/uploads/2023/07/beautiful-nature-scenery-Sikkim-India-1024x576.jpg?resize=1024%2C576"
@@ -151,13 +151,13 @@ const Dashboard = () => {
         </div>
         
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 tracking-tight">Weather Dashboard</h1>
-          <p className="text-xl text-gray-600 mt-2">Get the weather data for any location and date range.</p>
+          <h1 className="text-4xl mt-4 font-bold text-gray-900 tracking-tight">Weather Dashboard</h1>
+          <p className="text-l text-gray-600 mt-2">Get the weather data for any location and date range.</p>
         </div>
 
-        <div className="max-w-3xl mx-auto bg-white p-1 rounded-lg shadow-lg">
+        <div className="max-w-3xl mx-auto bg-white p-0 rounded-lg shadow-lg">
           {/* Location and Date Input Fields */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 p-8 gap-8 mb-6">
             <div className="sm:col-span-1 mb-4 sm:mb-0">
               <label className="block text-lg font-medium text-gray-700 mb-2">Latitude</label>
               <input
@@ -204,16 +204,16 @@ const Dashboard = () => {
 
             {/* Checkbox Selection */}
             <div className="sm:col-span-1 mb-4">
-              <h2 className="text-lg font-medium text-gray-700 mb-2 ml-16 whitespace-nowrap">Select Weather Data</h2>
-              <div className="space-y-3">
+              <h2 className="text-lg font-medium text-gray-900 mb-6 mr-36 whitespace-nowrap">Select Weather Data</h2>
+              <div className="space-y-3 ">
                 {Object.keys(selectedData).map((dataKey) => (
-                  <div key={dataKey} className="flex items-center space-x-2">
+                  <div key={dataKey} className="flex items-center  space-x-2">
                     <input
                       type="checkbox"
                       name={dataKey}
                       checked={selectedData[dataKey]}
                       onChange={handleCheckboxChange}
-                      className="mr-2 ml-4"
+                      className="mr-2 ml-0"
                     />
                     <label className="text-lg text-gray-700 whitespace-nowrap">
                       {dataKey.replace(/_/g, " ").toLowerCase()}
