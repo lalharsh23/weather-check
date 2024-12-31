@@ -156,7 +156,7 @@ const Dashboard = () => {
         </div>
 
         <div className="max-w-3xl mx-auto bg-white p-4 rounded-lg shadow-lg">
-          {/* Location and Date Input Fields */}
+         
           <div className="grid grid-cols-1 sm:grid-cols-2 p-8 gap-8 mb-6">
             <div className="sm:col-span-1 mb-4 sm:mb-0">
               <label className="block text-lg font-medium text-gray-700 mb-2">Latitude</label>
@@ -202,7 +202,7 @@ const Dashboard = () => {
               />
             </div>
 
-            {/* Checkbox Selection */}
+        
             <div className="sm:col-span-1 mb-4">
               <h2 className="text-lg font-medium text-gray-900 mb-6 mr-36 whitespace-nowrap">Select Weather Data</h2>
               <div className="space-y-3 ">
@@ -223,7 +223,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Submit Button */}
+        
             <div className="col-span-2 text-center mt-4">
               <button
                 onClick={fetchWeatherData}
@@ -234,11 +234,11 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Error and Loading States */}
+       
           {loading && <div className="text-center text-gray-600">Loading...</div>}
           {error && <div className="text-center text-red-500">{error}</div>}
 
-          {/* Weather Data Chart */}
+        
           {weatherData && !loading && (
             <div className="mt-8">
               <div className="relative h-80">
@@ -272,9 +272,9 @@ const Dashboard = () => {
             </div>
           )}
 
-          {/* Weather Data Table */}
+      
           {weatherData && !loading && (
-            <div className="mt-8 overflow-x-auto"> {/* Allow horizontal scrolling */}
+            <div className="mt-8 overflow-x-auto"> 
               <table className="min-w-full table-auto">
                 <thead>
                   <tr>
@@ -302,7 +302,7 @@ const Dashboard = () => {
                 </tbody>
               </table>
 
-              {/* Pagination Controls */}
+            
               <div className="flex justify-between mt-4">
                 <div>
                   <label className="text-lg font-medium">Rows per page:</label>
