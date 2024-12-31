@@ -150,12 +150,12 @@ const Dashboard = () => {
           />
         </div>
         
-        <div className="text-center mb-10">
-          <h1 className="text-4xl mt-4 font-bold text-gray-900 tracking-tight">Weather Dashboard</h1>
-          <p className="text-l text-gray-600 mt-2">Get the weather data for any location and date range.</p>
+        <div className="text-center mb-6">
+          <h1 className="text-4xl mt-8 font-bold text-gray-900 tracking-tight">Weather Dashboard</h1>
+          <p className="text-l text-gray-600 mt-4">Get the weather data for any location and date range.</p>
         </div>
 
-        <div className="max-w-3xl mx-auto bg-white p-0 rounded-lg shadow-lg">
+        <div className="max-w-3xl mx-auto bg-white p-4 rounded-lg shadow-lg">
           {/* Location and Date Input Fields */}
           <div className="grid grid-cols-1 sm:grid-cols-2 p-8 gap-8 mb-6">
             <div className="sm:col-span-1 mb-4 sm:mb-0">
